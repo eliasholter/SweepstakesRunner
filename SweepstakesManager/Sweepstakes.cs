@@ -23,8 +23,13 @@ namespace SweepstakesManager
             return;
         }
 
-        public string PickWinner(int winningKey)
+        public string PickWinner()
         {
+            List<int> keyList = new List<int>(dataSet.Keys);
+            Random random = new Random();
+
+            int winningKey = keyList[random.Next(keyList.Count)];
+
             string winningContestant = dataSet[winningKey].FirstName + " " + dataSet[winningKey].FirstName;
 
             return winningContestant;

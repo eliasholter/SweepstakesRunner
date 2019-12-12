@@ -17,12 +17,19 @@ namespace SweepstakesManager
 
         public Sweepstakes GetSweepstakes()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return stack.Pop();
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
 
         public void InsertSweepstakes(Sweepstakes sweepstakes)
         {
-            throw new NotImplementedException();
+            stack.Push(sweepstakes);
         }
     }
 }
