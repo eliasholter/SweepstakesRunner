@@ -10,6 +10,12 @@ namespace SweepstakesManager
     {
         static void Main(string[] args)
         {
+            string userChoice = UserInterface.ChooseManagerStyle();
+
+            ISweepstakesManager managerChoice = ManagerFactory.SelectManagerStyle(userChoice);
+
+            MarketingFirm firm = new MarketingFirm(managerChoice);
+
         }
     }
 }

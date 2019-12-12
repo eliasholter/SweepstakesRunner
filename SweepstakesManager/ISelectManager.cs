@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SweepstakesManager
 {
-    public interface ISweepstakesManager
+    public interface ISelectManager
     {
-        void InsertSweepstakes(Sweepstakes sweepstakes);
-
-        Sweepstakes GetSweepstakes();
+        ISweepstakesManager SelectManagerStyle(string choice);
     }
 }
