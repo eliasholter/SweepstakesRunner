@@ -23,9 +23,11 @@ namespace SweepstakesManager
             return;
         }
 
-        public Contestant PickWinner(int winningKey)
+        public string PickWinner(int winningKey)
         {
-            return dataSet[winningKey];
+            string winningContestant = dataSet[winningKey].FirstName + " " + dataSet[winningKey].FirstName;
+
+            return winningContestant;
         }
 
         public void DisplayContestantInfo(Contestant contestant)
