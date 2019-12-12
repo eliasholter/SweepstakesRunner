@@ -48,5 +48,17 @@ namespace SweepstakesManager
                 email = value;
             }
         }
+
+        public int RegistrationNumber
+        {
+            get
+            {
+                return registrationNumber;
+            }
+            set
+            {
+                registrationNumber = value;
+            }
+        }
     }
 }
