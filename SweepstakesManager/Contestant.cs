@@ -11,6 +11,7 @@ namespace SweepstakesManager
         private string firstName;
         private string lastName;
         private string email;
+        public bool isWinner;
         private int registrationNumber;
 
         public string FirstName
@@ -19,21 +20,12 @@ namespace SweepstakesManager
             {
                 return firstName;
             }
-            set
-            {
-                firstName = value;
-            }
         }
-
         public string LastName
         {
             get
             {
-                return LastName;
-            }
-            set
-            {
-                LastName = value;
+                return lastName;
             }
         }
 
@@ -43,10 +35,6 @@ namespace SweepstakesManager
             {
                 return email;
             }
-            set
-            {
-                email = value;
-            }
         }
 
         public int RegistrationNumber
@@ -55,10 +43,15 @@ namespace SweepstakesManager
             {
                 return registrationNumber;
             }
-            set
-            {
-                registrationNumber = value;
-            }
+        }
+
+        public Contestant(string firstName, string lastName, string email, int registrationNumber)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.registrationNumber = registrationNumber;
+            isWinner = false;
         }
     }
 }

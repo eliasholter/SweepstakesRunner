@@ -38,6 +38,18 @@ namespace SweepstakesManager
             return selection;
         }
 
+        public static Contestant NewContestant()
+        {
+            string firstName = GetCustomerFirstName();
+            string lastName = GetCustomerLastName();
+            string email = GetCustomerEmail();
+            int refNum = GetCustomerRefNumber();
+
+            Contestant newContestant = new Contestant(firstName, lastName, email, refNum);
+
+            return newContestant;
+        }
+
         public static string GetCustomerFirstName()
         {
             Console.WriteLine("Please enter your first name:");
@@ -46,29 +58,57 @@ namespace SweepstakesManager
 
         public static string GetCustomerLastName()
         {
+            Console.Clear();
             Console.WriteLine("Please enter your last name:");
             return Console.ReadLine();
         }
 
         public static string GetCustomerEmail()
         {
+            Console.Clear();
             Console.WriteLine("Please enter your email:");
             return Console.ReadLine();
         }
 
-        public static string GetCustomer()
+        public static int GetCustomerRefNumber()
         {
-            Console.WriteLine("Please enter your email:");
-            return Console.ReadLine();
+            Console.Clear();
+            bool userInputIsAnInteger = false;
+            int registrationNumber = -1;
+
+            while (!userInputIsAnInteger || registrationNumber < 0)
+            {
+                Console.WriteLine("Please enter your registration number: ");
+
+                userInputIsAnInteger = Int32.TryParse(Console.ReadLine(), out registrationNumber);
+            }
+
+            return registrationNumber;
         }
 
-        public static string PrintContestantInfo(string firstName, string lastName, string email, int registrationNumber)
+        public static void PrintContestantInfo(string firstName, string lastName, string email, int registrationNumber)
         {
             Console.WriteLine("First Name:          " + firstName);
             Console.WriteLine("Last Name:           " + lastName);
             Console.WriteLine("Email:               " + email);
             Console.WriteLine("Registration Number: " + registrationNumber);
-            return Console.ReadLine();
+            Console.ReadLine();
+            return;
+        }
+
+        public static void PrintContestantResults(Contestant contestant)
+        {
+            if (contestant.isWinner == true)
+            {
+                Console.WriteLine("Congratulations " + contestant.FirstName + " " + contestant.LastName + " you won the sweepstakes!");
+            }
+            else
+            {
+                Console.WriteLine("Sorry " + contestant.FirstName + " " + contestant.LastName + " you did not win this sweepstakes. Better luck next time!");
+            }
+
+            Console.ReadLine();
+            return;
         }
     }
 }
