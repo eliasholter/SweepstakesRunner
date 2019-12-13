@@ -96,14 +96,15 @@ namespace SweepstakesManager
             return;
         }
 
-        public static void PrintContestantResults(Contestant contestant)
+        public static void PrintContestantResults(Contestant contestant, string winner)
         {
             if (contestant.isWinner == true)
             {
-                Console.WriteLine("Congratulations " + contestant.FirstName + " " + contestant.LastName + " you won the sweepstakes!");
+                Console.WriteLine("Congratulations " + winner + " you won the sweepstakes!");
             }
             else
             {
+                Console.WriteLine("Congratulations to " + winner + " on winning the sweepstakes!");
                 Console.WriteLine("Sorry " + contestant.FirstName + " " + contestant.LastName + " you did not win this sweepstakes. Better luck next time!");
             }
 
