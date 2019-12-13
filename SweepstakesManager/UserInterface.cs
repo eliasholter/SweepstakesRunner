@@ -70,7 +70,7 @@ namespace SweepstakesManager
         public static string GetCustomerEmail()
         {
             Console.Clear();
-            Console.WriteLine("Please enter your email (This sweepstakes requires a Yahoo address):");
+            Console.WriteLine("Please enter your email:");
             return Console.ReadLine();
         }
 
