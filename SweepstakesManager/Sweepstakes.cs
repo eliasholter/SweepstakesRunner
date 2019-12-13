@@ -23,16 +23,20 @@ namespace SweepstakesManager
             return;
         }
 
-        public string PickWinner()
+        public void PickWinner()
         {
             List<int> keyList = new List<int>(dataSet.Keys);
             Random random = new Random();
 
             int winningKey = keyList[random.Next(keyList.Count)];
+            dataSet[winningKey].isWinner = true;
 
-            string winningContestant = dataSet[winningKey].FirstName + " " + dataSet[winningKey].FirstName;
+            foreach(int key in keyList)
+            {
+                UserInterface.PrintContestantResults(dataSet[key]);
+            }
 
-            return winningContestant;
+            return;
         }
 
         public void DisplayContestantInfo(Contestant contestant)
