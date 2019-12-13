@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
+
 namespace SweepstakesManager
 {
     public static class UserInterface
@@ -66,7 +70,7 @@ namespace SweepstakesManager
         public static string GetCustomerEmail()
         {
             Console.Clear();
-            Console.WriteLine("Please enter your email:");
+            Console.WriteLine("Please enter your email (This sweepstakes requires a Yahoo address):");
             return Console.ReadLine();
         }
 
@@ -101,6 +105,23 @@ namespace SweepstakesManager
             if (contestant.isWinner == true)
             {
                 Console.WriteLine("Congratulations " + winner + " you won the sweepstakes!");
+
+                // Use MailKit API to send email to the winner
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("Sweepstakes 'R' Us", "elias_footballer2@yahoo.com"));
+                message.To.Add(new MailboxAddress(winner, contestant.Email));
+                message.Subject = "Winner Winner Chicken Dinner!";
+                message.Body = new TextPart("plain") { Text = @"Greetings " + winner + " and congratulations on winning the sweepstakes!" };
+
+                using (var client = new SmtpClient())
+                {
+                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+                    client.Connect("smtp.mail.yahoo.com", 465, false);
+
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
             }
             else
             {
